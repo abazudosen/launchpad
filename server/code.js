@@ -197,7 +197,7 @@ export const RUNNER_WRAPPER = (code: string) =>
           global.engine.listen({
             graphqlPaths: ['/'],
             expressApp: server,
-            port: 3000,
+            port: 0,
             innerHost: '127.0.0.1'
           }, () => {
             proxyExpress.use((req, res, next) => {
