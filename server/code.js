@@ -65,7 +65,7 @@ export const RUNNER_WRAPPER = (code: string) =>
 
   (function() {
     if (__LAUNCHPAD__runtimeError) {
-      module.exports = function webtask(context, callback) {
+      module.exports = function (context, callback) {
         callback(__LAUNCHPAD__runtimeError);
       };
       return;
@@ -82,8 +82,6 @@ export const RUNNER_WRAPPER = (code: string) =>
     var CacheControlExtension = require('apollo-cache-control').CacheControlExtension;
     var request = require('request');
 
-    var server;
-    var engine;
 
     var schemaFunction =
       exports.schemaFunction ||
@@ -136,9 +134,9 @@ export const RUNNER_WRAPPER = (code: string) =>
       CacheControlExtension,
     ])
 
-    if (!server) {
-      server = express();
-      server.use(
+    if (!global.__server) {
+      global.__server = express();
+      global.__server.use(
         '/',
         (req, res, next) => {
           req.userContext = req.headers['usercontext']
@@ -177,8 +175,13 @@ export const RUNNER_WRAPPER = (code: string) =>
       );
     }
 
-    var proxyExpress = express();
-    var webtask = Webtask.fromExpress(server);
+    if(!global.__proxyExpress) {
+      global.__proxyExpress = express();
+    }
+
+    if(!global.__webtask) {
+      global.__webtask = Webtask.fromExpress(global.__server);
+    }
 
     module.exports = function (context, req, res) {
       req.userContext = JSON.parse(
@@ -189,22 +192,22 @@ export const RUNNER_WRAPPER = (code: string) =>
       }, {});
 
       if (req.userContext.APOLLO_ENGINE_KEY) {
-        if(!global.engine) {
-          global.engine = new ApolloEngine({
+        if(!global.__engine) {
+          global.__engine = new ApolloEngine({
             apiKey: req.userContext.APOLLO_ENGINE_KEY,
           });
 
-          global.engine.listen({
+          global.__engine.listen({
             graphqlPaths: ['/'],
-            expressApp: server,
+            expressApp: global.__server,
             port: 0,
             innerHost: '127.0.0.1'
           }, () => {
-            proxyExpress.use((req, res, next) => {
+            global.__proxyExpress.use((req, res, next) => {
               req.pipe(process.stdout);
 
               var proxyRes = req.pipe(request({
-                uri: global.engine.engineListeningAddress.url,
+                uri: global.__engine.engineListeningAddress.url,
                 forever: true,
                 headers: {
                   'usercontext': JSON.stringify(req.userContext),
@@ -221,14 +224,14 @@ export const RUNNER_WRAPPER = (code: string) =>
               proxyRes.pipe(res);
             });
 
-            webtask = Webtask.fromExpress(proxyExpress);
-            webtask(context, req, res);
+            global.__webtask = Webtask.fromExpress(global.__proxyExpress);
+            global.__webtask(context, req, res);
           });
         } else {
-          webtask(context, req, res);
+          global.__webtask(context, req, res);
         }
       } else {
-        webtask(context, req, res);
+        global.__webtask(context, req, res);
       }
     }
   })();
