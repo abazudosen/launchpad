@@ -18,18 +18,6 @@ const CORE_DEPENDENCIES = [
     version: '2.15.0',
   },
   {
-    name: 'apollo-tracing',
-    version: '0.1.3',
-  },
-  {
-    name: 'apollo-cache-control',
-    version: '0.0.9',
-  },
-  {
-    name: 'graphql-extensions',
-    version: '0.0.8',
-  },
-  {
     name: 'apollo-engine',
     version: '1.0.4-evans.0',
   },
@@ -46,8 +34,8 @@ const CORE_DEPENDENCIES = [
     version: '1.18.2',
   },
   {
-    name: 'express-graphql',
-    version: '0.6.11',
+    name: 'launchpad-module',
+    version: '0.0.0',
   },
 ];
 

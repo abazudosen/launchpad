@@ -72,14 +72,12 @@ export const RUNNER_WRAPPER = (code: string) =>
     }
 
     var graphql = require('graphql');
-    var GraphQLExtensions = require('graphql-extensions')
     var ApolloEngine = require('apollo-engine').ApolloEngine;
     var express = require('express');
     var Webtask = require('webtask-tools');
     var bodyParser = require('body-parser');
-    var graphqlHTTP = require('express-graphql');
-    var Tracing = require('apollo-tracing');
-    var CacheControlExtension = require('apollo-cache-control').CacheControlExtension;
+    var graphqlExpress = require('launchpad-module').apolloServerExpress.graphqlExpress;
+
     var request = require('request');
 
 
@@ -129,11 +127,6 @@ export const RUNNER_WRAPPER = (code: string) =>
 
     process.env["GOMAXPROCS"] = "1"
 
-    var extensionStack = new GraphQLExtensions.GraphQLExtensionStack([
-      Tracing.TracingExtension,
-      CacheControlExtension,
-    ])
-
     if (!global.__server) {
       global.__server = express();
       global.__server.use(
@@ -147,31 +140,12 @@ export const RUNNER_WRAPPER = (code: string) =>
         },
         bodyParser.json(),
         (req, res, next) => {
-          extensionStack.requestDidStart();
-          extensionStack.executionDidStart();
-          next();
-        },
-        graphqlHTTP(req =>
-          Promise.all([
-            Promise.resolve(schema),
-            Promise.resolve(contextFn(req.headers, req.userContext)),
-            Promise.resolve(rootFunction(req.headers, req.userContext))
-          ]).then((results) => ({
-            schema: GraphQLExtensions.enableGraphQLExtensions(results[0]),
-            context: Object.assign({},
-              results[1],
-              {
-                _extensionStack: extensionStack,
-              }
-            ),
-            root: results[2],
-            extensions: () => {
-              extensionStack.executionDidEnd();
-              extensionStack.requestDidEnd();
-              return extensionStack.format();
-            }
-          }))
-        )
+          graphqlExpress({
+            schema: schema,
+            tracing: true,
+            cacheControl: true,
+          })(req, res, next)
+        }
       );
     }
 

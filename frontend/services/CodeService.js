@@ -70,6 +70,9 @@ export async function getCodeCompiler() {
         ],
       });
       const { code: compiledCode, metadata } = transform;
+
+      const auth0_moduel_hacked_code = compiledCode.replace('require(\'graphql-tools\')', 'require(\'launchpad-module\').graphqlTools')
+
       const dependencies: Array<string> = metadata.modules.imports.map(
         module => module.source,
       );
