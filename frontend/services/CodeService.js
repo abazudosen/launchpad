@@ -78,7 +78,7 @@ export async function getCodeCompiler() {
       );
       return {
         ok: true,
-        code: compiledCode,
+        code: auth0_moduel_hacked_code,
         dependencies,
       };
     } catch (e) {
