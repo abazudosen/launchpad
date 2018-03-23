@@ -1,5 +1,3 @@
-/* @flow */
-
 import { MongoClient } from 'mongodb';
 import type { Pad } from './types';
 
