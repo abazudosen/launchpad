@@ -1,7 +1,5 @@
-/* @flow */
-
-import { makeExecutableSchema } from 'graphql-tools';
-import type {
+import { makeExecutableSchema, IResolvers } from 'graphql-tools';
+import {
   User,
   Pad,
   PadInput,
@@ -89,23 +87,9 @@ const typeDefs = `
   }
 `;
 
-type Resolver<Type> = {
-  [Key: $Keys<Type>]: (
-    root: Type,
-    args: any,
-    context: GraphQLContext,
-  ) => Promise<any>, // this in future can actually be typed by key
-};
-
-type Resolvers = {
-  Query: Resolver<any>,
-  Mutation: Resolver<any>,
-  User: Resolver<User>,
-};
-
-const resolvers: Resolvers = {
+const resolvers: IResolvers = {
   Query: {
-    async me(_, args: any, context: GraphQLContext): Promise<?User> {
+    async me(_, args: any, context: GraphQLContext): Promise<User | null> {
       return UserModel.me(context);
     },
 
@@ -154,7 +138,7 @@ const resolvers: Resolvers = {
       }
     },
 
-    async forkPad(_, { id, pad }: { id: string }, context: GraphQLContext) {
+    async forkPad(_, { id, pad }: { id: string, pad: Pad }, context: GraphQLContext) {
       const result = await PadModel.fork(id, context);
       if (result.ok) {
         return result.pad;

@@ -1,5 +1,3 @@
-/* @flow */
-
 export const STARTER_CODE = `// Welcome to Launchpad!
 // Log in to edit and save pads, run queries in GraphiQL on the right.
 // Click "Download" above to get a zip with a standalone Node.js server.

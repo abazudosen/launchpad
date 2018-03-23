@@ -6,33 +6,33 @@ import WebtaskProvider from './WebtaskProvider';
 export type User = {
   id: string,
   githubUsername: string,
-  pads?: Array<Pad>,
+  pads?: Array<Pad> | null,
 };
 
 export type Context = {
   key: string,
-  value?: string,
+  value?: string | null,
 };
 
 export type Dependency = {
   name: string,
-  version: ?string,
+  version?: string | null,
 };
 
 export type Pad = {
   id: string,
-  title: ?string,
-  description: ?string,
-  code: ?string,
-  deployedCode: ?string,
-  url: ?string,
-  user: ?User,
-  context: ?Array<Context>,
-  dependencies: ?Array<Dependency>,
-  draft: ?Pad,
-  defaultQuery: ?string,
-  defaultVariables: ?string,
-  token: ?string,
+  title?: string | null,
+  description?: string | null,
+  code?: string | null,
+  deployedCode?: string | null,
+  url?: string | null,
+  user: User | null,
+  context?: Array<Context> | null,
+  dependencies?: Array<Dependency> | null,
+  draft?: Pad | null,
+  defaultQuery?: string | null,
+  defaultVariables?: string | null,
+  token?: string | null,
 };
 
 export type PadInput = {
@@ -45,10 +45,10 @@ export type PadInput = {
 
 export type PadMetadataInput = {
   id: string,
-  title?: string,
-  description?: string,
-  defaultQuery?: string,
-  defaultVariables?: string,
+  title?: string | null,
+  description?: string | null,
+  defaultQuery?: string | null,
+  defaultVariables?: string | null,
 };
 
 export type PadInputWithoutId = {
@@ -61,5 +61,5 @@ export type PadInputWithoutId = {
 export type GraphQLContext = {
   mongo: MongoProvider,
   webtask: WebtaskProvider,
-  user: ?User,
+  user?: User | null,
 };

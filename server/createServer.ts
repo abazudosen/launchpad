@@ -1,11 +1,9 @@
-/* @flow */
-
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
+import * as express from 'express';
+import * as cors from 'cors';
+import * as bodyParser from 'body-parser';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import schema from './schema';
-import type { GraphQLContext } from './types';
+import { GraphQLContext } from './types';
 import MongoProvider from './MongoProvider';
 import WebtaskProvider from './WebtaskProvider';
 import UserModel from './UserModel';
@@ -15,8 +13,8 @@ export type Options = {
   WT_API: string,
   MONGODB_URL: string,
   AUTH0_SECRET: string,
-  WT_NO_PROXY: ?string,
-  WT_SINGLE_TENANT_CONTAINER: ?string,
+  WT_NO_PROXY: string | null,
+  WT_SINGLE_TENANT_CONTAINER: string | null,
 };
 
 export default function createServer(options: Options) {
@@ -29,7 +27,7 @@ export default function createServer(options: Options) {
     bodyParser.json(),
     graphqlExpress(async request => {
       const user = await UserModel.verify(
-        request.headers['authorization'],
+        request && request.headers['authorization'] as string,
         options.AUTH0_SECRET,
       );
       return {
@@ -44,7 +42,7 @@ export default function createServer(options: Options) {
             singleTenantContainer: options.WT_SINGLE_TENANT_CONTAINER,
             noProxy: Boolean(options.WT_NO_PROXY),
           }),
-        }: GraphQLContext),
+        } as GraphQLContext),
         rootValue: {},
       };
     }),

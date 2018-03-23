@@ -3,7 +3,7 @@
 import fetch from 'node-fetch';
 import { fromPairs } from 'lodash';
 import { RUNNER_WRAPPER } from './code';
-import type { Context, Dependency } from './types';
+import { Context, Dependency } from './types';
 
 const UNPKG_URL = 'https://unpkg.com';
 const WEBTASK_API_URL = 'https://webtask.it.auth0.com/api';
@@ -42,8 +42,8 @@ const CORE_DEPENDENCIES = [
 class WebtaskProvider {
   webtaskUrl: string;
   token: string;
-  tokens: { [string]: string };
-  singleTenantContainer: ?string;
+  tokens: Record<string, string>;
+  singleTenantContainer: string | null;
   noProxy: boolean;
 
   constructor({
@@ -53,8 +53,8 @@ class WebtaskProvider {
     noProxy,
   }: {
     token: string,
-    webtaskUrl: ?string,
-    singleTenantContainer: ?string,
+    webtaskUrl: string | null,
+    singleTenantContainer: string | null,
     noProxy: boolean,
   }) {
     this.webtaskUrl = webtaskUrl || WEBTASK_API_URL;
@@ -128,13 +128,13 @@ class WebtaskProvider {
     this.tokens[containerId] = token;
   }
 
-  async resolveDependency(name: string): Promise<?string> {
+  async resolveDependency(name: string): Promise<string | null> {
     const url = `${UNPKG_URL}/${name}/package.json`;
     const fetchResult = await fetch(url);
     if (fetchResult.ok) {
       const packageJSON = await fetchResult.json();
       if (packageJSON.version) {
-        return (packageJSON.version: string);
+        return (packageJSON.version as string);
       } else {
         return null;
       }
@@ -146,7 +146,7 @@ class WebtaskProvider {
 
   async resolveDependencies(
     dependencies: Array<string>,
-    oldDependencies: ?Array<Dependency>,
+    oldDependencies?: Array<Dependency>,
   ): Promise<Array<Dependency>> {
     oldDependencies = oldDependencies || [];
     const packageMap = fromPairs(
@@ -183,27 +183,28 @@ class WebtaskProvider {
     dependencies: Array<Dependency>,
   ): Promise<{ ok: boolean }> {
     let token;
-    if (this.singeTenantContainer) {
+    if (this.singleTenantContainer) {
       token = this.token;
     } else {
       token = await this.getToken(containerId);
     }
 
-    const depResult = (await this.query({
-      endpoint: '/env/node/modules',
-      method: 'POST',
-      body: {
-        modules: dependencies,
-      },
-      token,
-    }): {
+    const depResult : {
       ok: boolean,
       response: Array<{
         name: string,
         version: string,
         state: 'available' | 'queued' | 'failed',
       }>,
+    } = await this.query({
+      endpoint: '/env/node/modules',
+      method: 'POST',
+      body: {
+        modules: dependencies,
+      },
+      token,
     });
+
     if (depResult.ok) {
       if (
         depResult.response.every(dependency => dependency.state === 'available')
@@ -213,7 +214,7 @@ class WebtaskProvider {
         };
       } else {
         console.log('Waiting for dependencies.');
-        return new Promise(resolve => {
+        return new Promise<{ok: boolean}>(resolve => {
           setTimeout(() => {
             resolve(this.ensureDependencies(containerId, dependencies));
           }, 1000);
@@ -257,7 +258,7 @@ class WebtaskProvider {
       endpoint = `/webtask/${containerId}/${name}`;
     }
 
-    let url;
+    let url: string;
     if (this.noProxy) {
       if (this.singleTenantContainer) {
         url = `${this.webtaskUrl}/run/${this

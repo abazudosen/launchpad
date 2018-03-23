@@ -1,9 +1,7 @@
-/* @flow */
-
 import Hashids from 'hashids';
 import UserModel from './UserModel';
 import { STARTER_CODE } from './code';
-import type {
+import {
   Pad,
   GraphQLContext,
   PadInput,
@@ -19,6 +17,8 @@ const ID_GENERATOR = new Hashids(
   8,
   'bcdfghjklmnpqrstvwxz0123456789',
 );
+
+type UpdateResult = {ok: true, pad: Pad } | { ok: false, reason: string };
 
 const PadModel = {
   filter(pad: Pad, context: GraphQLContext): Pad {
@@ -71,7 +71,7 @@ const PadModel = {
     );
   },
 
-  async empty(context: GraphQLContext, id: ?string = null): Promise<Pad> {
+  async empty(context: GraphQLContext, id: string | null = null): Promise<Pad> {
     if (!id) {
       id = await PadModel.generateId(context);
     }
@@ -109,7 +109,7 @@ const PadModel = {
     );
   },
 
-  async getById(id: string, context: GraphQLContext): Promise<?Pad> {
+  async getById(id: string, context: GraphQLContext): Promise<Pad | null> {
     const collection = await context.mongo.pads();
     const pad = await collection.findOne({
       id,
@@ -126,8 +126,11 @@ const PadModel = {
     const user = await UserModel.me(context);
     if (user) {
       const pads = await collection
+        //TODO: determine if works
         .find({
-          'user.id': user.id,
+          user: {
+            id : user.id
+          },
         })
         .toArray();
       return pads.map(pad => PadModel.filter(pad, context));
@@ -145,7 +148,7 @@ const PadModel = {
       ok: true,
       resolvedDependencies: Array<Dependency>,
     }
-    | { ok: false, reason: string },
+    | { ok: false, reason: string }
   > {
     let resolvedDependencies = await context.webtask.resolveDependencies(
       dependencies,
@@ -228,7 +231,7 @@ const PadModel = {
       dependencies = [],
     }: PadInput,
     context: GraphQLContext,
-  ): Promise<{ ok: true, pad: Pad } | { ok: false, reason: string }> {
+  ): Promise<UpdateResult> {
     const pad = await PadModel.getById(id, context);
 
     let token;
@@ -280,7 +283,7 @@ const PadModel = {
   // 1. Generate a new ID and new pad object, generate new token
   // 2. If we own the pad being forked, copy the secrets; otherwise, only copy the keys
   // 3. Copy all the rest of the data
-  async fork(id: string, context: GraphQLContext) {
+  async fork(id: string, context: GraphQLContext) : Promise<UpdateResult> {
     const pad = await PadModel.getById(id, context);
     const newId = await PadModel.generateId(context);
     const user = await UserModel.me(context);
@@ -494,7 +497,7 @@ const PadModel = {
   },
 };
 
-async function savePad(pad: Pad, context: GraphQLContext) {
+async function savePad(pad: Pad, context: GraphQLContext): Promise<UpdateResult> {
   const collection = await context.mongo.pads();
   if (pad.deployedCode) {
     const result = await PadModel.deploy(

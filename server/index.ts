@@ -1,17 +1,14 @@
-/* @flow */
+import createServer, { Options } from './createServer';
 
-import createServer from './createServer';
-import type { Options } from './createServer';
-
-function getFromEnv(key): string {
+function getFromEnv(key: string): string {
   const value = process.env[key];
   if (!value) {
     throw new Error(`Missing environment variable: '${key}'`);
   }
-  return value || null;
+  return value;
 }
 
-function getFromEnvNullable(key): ?string {
+function getFromEnvNullable(key: string): string | null {
   const value = process.env[key];
   return value || null;
 }

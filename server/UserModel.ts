@@ -1,10 +1,20 @@
-/* @flow */
+import { verify } from 'jsonwebtoken';
+import { User, Pad, GraphQLContext } from './types';
 
-import jwt from 'jsonwebtoken';
-import type { User, Pad, GraphQLContext } from './types';
+interface VerifyResult {
+  ok: true;
+  result: Record<string, string>;
+};
+
+interface VerifyFailure {
+  ok: false;
+  result: Error;
+};
+
+type VerificationPromise = VerifyResult | VerifyFailure;
 
 const UserModel = {
-  filter(user: ?User, context: GraphQLContext) {
+  filter(user: User | null, context: GraphQLContext) {
     if (user) {
       return {
         id: user.id,
@@ -15,12 +25,13 @@ const UserModel = {
     }
   },
 
-  async verify(authorization: ?string, secret: string): Promise<?User> {
+
+  async verify(authorization: string | undefined, secret: string): Promise<User | null> {
     const bearerLength = 'Bearer: '.length;
     if (authorization && authorization.length > bearerLength) {
       const token = authorization.slice(bearerLength);
-      const { ok, result } = await new Promise(resolve =>
-        jwt.verify(token, secret, (err, result) => {
+      const result = await new Promise<VerificationPromise>(resolve =>
+        verify(token, secret, (err, result) => {
           if (err) {
             resolve({
               ok: false,
@@ -29,18 +40,18 @@ const UserModel = {
           } else {
             resolve({
               ok: true,
-              result,
+              result: result as Record<string, string>,
             });
           }
         }),
       );
-      if (ok) {
+      if (result.ok) {
         return {
-          id: result.sub,
-          githubUsername: result.nickname,
+          id: result.result.sub,
+          githubUsername: result.result.nickname,
         };
       } else {
-        console.error(result);
+        console.error(result.result);
         return null;
       }
     } else {
@@ -48,7 +59,7 @@ const UserModel = {
     }
   },
 
-  me(context: GraphQLContext): ?User {
+  me(context: GraphQLContext): User | null {
     if (context.user) {
       return UserModel.filter(context.user, context);
     } else {
@@ -56,15 +67,15 @@ const UserModel = {
     }
   },
 
-  canSeePadSecrets(user: ?User, pad: ?Pad, context: GraphQLContext): boolean {
+  canSeePadSecrets(user: User | null, pad: Pad | null, context: GraphQLContext): boolean {
     return Boolean(!pad || !pad.user || (user && user.id === pad.user.id));
   },
 
-  canUpdatePad(user: ?User, pad: ?Pad, context: GraphQLContext): boolean {
+  canUpdatePad(user: User | null, pad: Pad | null, context: GraphQLContext): boolean {
     return Boolean(user && (!pad || !pad.user || user.id === pad.user.id));
   },
 
-  canUpdateDraft(user: ?User, pad: ?Pad, context: GraphQLContext): boolean {
+  canUpdateDraft(user: User | null, pad: Pad | null, context: GraphQLContext): boolean {
     return Boolean(!pad || !pad.user || (user && user.id === pad.user.id));
   },
 };
