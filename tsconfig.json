@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "lib": ["es7", "dom",  "esnext"],
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "target": "es6",
+    "module": "es2015",
+    "allowJs": true,
+    "moduleResolution": "node",
+  },
+}
