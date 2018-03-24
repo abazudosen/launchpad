@@ -126,11 +126,8 @@ const PadModel = {
     const user = await UserModel.me(context);
     if (user) {
       const pads = await collection
-        //TODO: determine if works
         .find({
-          user: {
-            id : user.id
-          },
+          'user.id': user.id
         })
         .toArray();
       return pads.map(pad => PadModel.filter(pad, context));
