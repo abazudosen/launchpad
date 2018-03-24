@@ -117,6 +117,23 @@ npm install
 npm run dev-server
 ```
 
+To test your server implementation, ensure that you have a mongodb instance running at MONGO_URL and then run:
+
+```
+npm run test-server
+```
+
+To log the information produced by a backing webtask in testing, create a profile, then run the log command.
+
+```
+npm install wt-cli -g
+wt init -p "lp-test" \
+     --url https://wt-launchpad.it.auth0.com \
+     --token $WT_TOKEN \
+     --container launchpad-test
+wt logs -p "lp-test"
+```
+
 ### Using the staging webtask
 
 Running against staging webtask service, so you don't need your own webtask or Auth0 Extend account.
