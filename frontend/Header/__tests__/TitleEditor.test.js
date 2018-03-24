@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import TitleEditor from '../Header/TitleEditor';
+import TitleEditor from '../TitleEditor';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import serializer from 'enzyme-to-json/serializer';

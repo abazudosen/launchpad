@@ -1,6 +1,6 @@
 /* @flow */
 
-import { getLinter } from './services/CodeService';
+import { getLinter } from '../../services/CodeService';
 
 // XXX for some reason the compilation breaks if you switch to async/await here
 export default function register(CodeMirror: any) {

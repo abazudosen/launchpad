@@ -4,10 +4,10 @@ import fetch from 'isomorphic-fetch';
 import React, { Component } from 'react';
 import GraphiQL from 'graphiql';
 import { parse, print } from 'graphql';
-import type { Pad, User } from './types';
-import PadStorage from './PadStorage';
-import KeyValueEditor from './KeyValueEditor';
-import Modal from './Modal';
+import type { Pad, User } from '../types';
+import PadStorage from '../PadStorage';
+import KeyValueEditor from '../modal/KeyValueEditor';
+import Modal from '../modal/Modal';
 
 import 'graphiql/graphiql.css';
 import 'codemirror/theme/solarized.css';

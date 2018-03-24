@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import type { User } from './types';
-import ListHeader from './Header/ListHeader';
+import ListHeader from '../Header/ListHeader';
 import ListPad from './ListPad';
 import './List.less';
 

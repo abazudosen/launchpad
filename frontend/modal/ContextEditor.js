@@ -1,4 +1,7 @@
 /* @flow */
+/**
+ * Edits the secrets for a pad
+ */
 
 import React, { Component } from 'react';
 import type { Context } from './types';

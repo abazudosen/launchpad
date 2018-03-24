@@ -1,16 +1,19 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import type { Pad, User, Context } from './types';
-import PadStorage from './PadStorage';
-import Header from './Header/Header';
+import type { Pad, User, Context } from '../types';
+import PadStorage from '../PadStorage';
+import Header from '../Header/Header';
+
 import Footer from './Footer';
 import GraphiQLWrapper from './GraphiQLWrapper';
-import Editor from './Editor';
+import Editor from './code-editor/Editor';
 import Logs from './Logs';
-import ContextEditor from './ContextEditor';
-import Dependencies from './Dependencies';
-import Modal from './Modal';
+
+import ContextEditor from '../modal/ContextEditor';
+import Dependencies from '../modal/Dependencies';
+import Modal from '../modal/Modal';
+
 import './PadSplit.less';
 import './Resizer.less';
 import SplitPane from 'react-split-pane';

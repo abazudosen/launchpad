@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import UserBar from '../Header/UserBar';
+import UserBar from '../UserBar';
 import { mount } from 'enzyme';
 import serializer from 'enzyme-to-json/serializer';
 

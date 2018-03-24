@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { gql, graphql } from 'react-apollo';
 import type { User, ApolloData } from './types';
-import { LoadingSpinner } from './LoadingSpinner';
+import { LoadingSpinner } from '../LoadingSpinner';
 import List from './List';
 import './PadContainer.less';
 

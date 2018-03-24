@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import HeaderLogo from '../Header/HeaderLogo';
+import HeaderLogo from '../HeaderLogo';
 import renderer from 'react-test-renderer';
 
 test('renders normal', () => {

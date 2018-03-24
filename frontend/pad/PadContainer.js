@@ -15,7 +15,7 @@ import { getLock } from './services/Auth0LockService';
 import { download } from './services/EjectService';
 import Pad from './Pad';
 import './PadContainer.less';
-import { LoadingSpinner } from './LoadingSpinner';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 type PadContainerProps = {|
   id: string,

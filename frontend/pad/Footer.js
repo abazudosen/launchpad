@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import extendLogo from '../static/auth0-extend-logo.svg';
+import extendLogo from '../../static/auth0-extend-logo.svg';
 import './Footer.less';
 
 type FooterProps = {|

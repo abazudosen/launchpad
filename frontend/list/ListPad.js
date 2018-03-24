@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import type { Pad } from './types';
-import { getPrismHighlighter } from './services/CodeService';
+import { getPrismHighlighter } from '../services/CodeService';
 import './ListPad.less';
 
 type ListPadProps = {|

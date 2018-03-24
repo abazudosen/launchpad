@@ -4,7 +4,7 @@ import React from 'react';
 import Editor from '../Editor.js';
 import { mount } from 'enzyme';
 import serializer from 'enzyme-to-json/serializer';
-import { STARTER_CODE } from '../../server/code';
+import { STARTER_CODE } from '../../../../server/code';
 
 // This is not a very useful test
 

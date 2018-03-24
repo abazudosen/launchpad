@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import Header from '../Header/Header.js';
+import Header from '../Header.js';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 
 const renderer = new ReactShallowRenderer();

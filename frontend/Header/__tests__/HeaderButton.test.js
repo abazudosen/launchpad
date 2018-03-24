@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import HeaderButton from '../Header/HeaderButton';
+import HeaderButton from '../HeaderButton';
 import renderer from 'react-test-renderer';
 
 test('renders normal', () => {
