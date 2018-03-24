@@ -6,8 +6,15 @@ import {
   ApolloProvider,
   createNetworkInterface,
 } from 'react-apollo';
+import {
+  Route,
+  DefaultRoute,
+  BrowserRouter,
+  Switch,
+  Redirect,
+} from 'react-router';
 import PadContainer from './PadContainer';
-import ListContainer from './ListContainer';
+import ListContainer from './list/ListContainer';
 
 const networkInterface = createNetworkInterface({
   uri: process.env.REACT_APP_LAUNCHPAD_API_URL,
@@ -66,7 +73,31 @@ export default class App extends Component {
   render() {
     return (
       <ApolloProvider client={apolloClient}>
-        {this.renderContainer()}
+        <BrowserRouter>
+          <div className="App">
+            <Switch>
+              <DefaultRoute>{() => <Redirect to={'/new'} />}</DefaultRoute>
+              <Route exact path="/list">
+                {() => <ListContainer />}
+              </Route>
+              <Route exact path="/new">
+                <PadContainer engineClient={engineApolloClient} />
+              </Route>
+              <Route path="/:id">
+                {({ match }) =>
+                  match.params.id.length < 8 ||
+                  !match.params.id.match('^[a-zA-Z0-9_]*$') ? (
+                    <Redirect to={'/new'} />
+                  ) : (
+                    <PadContainer
+                      id={match.params.id}
+                      engineClient={engineApolloClient}
+                    />
+                  )}
+              </Route>
+            </Switch>
+          </div>
+        </BrowserRouter>
       </ApolloProvider>
     );
   }
