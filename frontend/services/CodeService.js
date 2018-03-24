@@ -71,9 +71,16 @@ export async function getCodeCompiler() {
       });
       const { code: compiledCode, metadata } = transform;
 
-      console.log(compiledCode)
-      const auth0_moduel_hacked_code = compiledCode.replace('require(\'graphql-tools\')', 'require(\'launchpad-module\').graphqlTools')
-      console.log(auth0_moduel_hacked_codecompiledCode)
+      const auth0_moduel_hacked_code = compiledCode.replace(
+        "var _graphqlTools = require('graphql-tools')",
+        `var _graphqlTools;
+        try {
+          _graphqlTools = require('launchpad-module').graphqlTools;
+        } catch(e) {
+          var _graphqlTools = require('graphql-tools');
+        }
+        `,
+      );
 
       const dependencies: Array<string> = metadata.modules.imports.map(
         module => module.source,
