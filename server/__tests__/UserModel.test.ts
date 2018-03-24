@@ -1,13 +1,11 @@
-/* @flow */
-
 import jwt from 'jsonwebtoken';
-import type { Pad, GraphQLContext } from '../types';
+import { Pad, GraphQLContext } from '../types';
 
 import UserModel from '../UserModel';
 
-import { createTestContext } from '../../test/testUtils';
+import { createTestContext } from './utils/testUtils';
 
-const context = ((createTestContext(null): any): GraphQLContext);
+const context: GraphQLContext = createTestContext();
 
 describe('verify', () => {
   const secret =
@@ -15,11 +13,16 @@ describe('verify', () => {
   const secret2 =
     'XyCg253ILEcmU4WsInmRvhqsEqEBsvuHdEF1TkIWUZxN5mztiaX6z94nWNpSjsW';
 
-  test('no authorization', async () => {
+  it('no authorization', async () => {
+    const _error = console.error;
+    const mock = jest.fn();
+    console.error = mock;
     expect(await UserModel.verify(null, secret)).toBeNull();
+    expect(mock).toBeCalled();
+    console.error = _error;
   });
 
-  test('valid authorization', async () => {
+  it('valid authorization', async () => {
     const authorization = `Bearer: ${jwt.sign(
       {
         sub: 'test-id',
@@ -37,7 +40,9 @@ describe('verify', () => {
     });
   });
 
-  test('invalid authorization', async () => {
+  it('invalid authorization', async () => {
+    const _error = console.error;
+    console.error = jest.fn();
     const authorization = `Bearer: ${jwt.sign(
       {
         sub: 'test-id',
@@ -45,10 +50,13 @@ describe('verify', () => {
       },
       secret2,
     )}`;
+
     expect(await UserModel.verify(authorization, secret)).toBeNull();
+    expect(console.error).toBeCalled();
+    console.error = _error;
   });
 
-  test('expired authorization', async () => {
+  it('expired authorization', async () => {
     const authorization = `Bearer: ${jwt.sign(
       {
         sub: 'test-id',
@@ -65,11 +73,11 @@ describe('verify', () => {
 });
 
 describe('me', () => {
-  test('anonymous', () => {
+  it('anonymous', () => {
     expect(UserModel.me(context)).toBeNull();
   });
 
-  test('logged-in', () => {
+  it('logged-in', () => {
     const user = {
       id: 'test-id',
       githubUsername: 'testUsername',
@@ -94,23 +102,23 @@ describe('permissions', () => {
     githubUsername: 'testUsername2',
   };
 
-  const padNull = (({
+  const padNull: Pad = {
     id: 'pad-1',
     user: null,
-  }: any): Pad);
+  };
 
-  const padUser1 = (({
+  const padUser1: Pad = {
     id: 'pad-2',
     user: user1,
-  }: any): Pad);
+  };
 
-  const padUser2 = (({
+  const padUser2: Pad = {
     id: 'pad-3',
     user: user2,
-  }: any): Pad);
+  };
 
   describe('can see pad secrets', () => {
-    test('only owner can see pad secrets', () => {
+    it('only owner can see pad secrets', () => {
       expect(UserModel.canSeePadSecrets(anon, padUser1, context)).toBe(false);
       expect(UserModel.canSeePadSecrets(user1, padUser1, context)).toBe(true);
       expect(UserModel.canSeePadSecrets(user2, padUser1, context)).toBe(false);
@@ -119,7 +127,7 @@ describe('permissions', () => {
       expect(UserModel.canSeePadSecrets(user2, padUser2, context)).toBe(true);
     });
 
-    test('anonymous pad secrets can be seen by anyone', () => {
+    it('anonymous pad secrets can be seen by anyone', () => {
       [anon, user1, user2].forEach(user => {
         expect(UserModel.canSeePadSecrets(user, padNull, context)).toBe(true);
       });
@@ -127,7 +135,7 @@ describe('permissions', () => {
   });
 
   describe('can update pad', () => {
-    test('only owner can update pad', () => {
+    it('only owner can update pad', () => {
       expect(UserModel.canUpdatePad(anon, padUser1, context)).toBe(false);
       expect(UserModel.canUpdatePad(user1, padUser1, context)).toBe(true);
       expect(UserModel.canUpdatePad(user2, padUser1, context)).toBe(false);
@@ -136,7 +144,7 @@ describe('permissions', () => {
       expect(UserModel.canUpdatePad(user2, padUser2, context)).toBe(true);
     });
 
-    test('non-anonymous user can update anonymous pad', () => {
+    it('non-anonymous user can update anonymous pad', () => {
       expect(UserModel.canUpdatePad(anon, padNull, context)).toBe(false);
       expect(UserModel.canUpdatePad(user1, padNull, context)).toBe(true);
       expect(UserModel.canUpdatePad(user2, padNull, context)).toBe(true);
@@ -144,7 +152,7 @@ describe('permissions', () => {
   });
 
   describe('can update draft', () => {
-    test('owner can update draft', () => {
+    it('owner can update draft', () => {
       expect(UserModel.canUpdateDraft(anon, padUser1, context)).toBe(false);
       expect(UserModel.canUpdateDraft(user1, padUser1, context)).toBe(true);
       expect(UserModel.canUpdateDraft(user2, padUser1, context)).toBe(false);
@@ -153,7 +161,7 @@ describe('permissions', () => {
       expect(UserModel.canUpdateDraft(user2, padUser2, context)).toBe(true);
     });
 
-    test('anonymous pad draft can be updated by anyone', () => {
+    it('anonymous pad draft can be updated by anyone', () => {
       [anon, user1, user2].forEach(user => {
         expect(UserModel.canUpdateDraft(user, padNull, context)).toBe(true);
       });

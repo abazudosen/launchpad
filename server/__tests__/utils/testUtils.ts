@@ -1,9 +1,8 @@
-/* @flow */
-
 import { fromPairs } from 'lodash';
 import { randomString } from 'cryptiles';
-import type { Dependency, Context } from '../server/types';
-import MongoProvider from '../server/MongoProvider';
+import { Dependency, Context } from '../../types';
+import MongoProvider from '../../MongoProvider';
+import WebtaskProvider from '../../WebtaskProvider';
 
 export class MockWebtaskProvider {
   async getToken(containerId: string): Promise<string> {
@@ -16,13 +15,13 @@ export class MockWebtaskProvider {
     return { ok: true, response: null };
   }
 
-  async resolveDependency(name: string): Promise<?string> {
+  async resolveDependency(name: string): Promise<string | null> {
     return '0.0.0-FAKE';
   }
 
   async resolveDependencies(
     dependencies: Array<string>,
-    oldDependencies: ?Array<Dependency>,
+    oldDependencies?: Array<Dependency> | null,
   ): Promise<Array<Dependency>> {
     oldDependencies = oldDependencies || [];
     const packageMap = fromPairs(
@@ -89,12 +88,12 @@ export class MockWebtaskProvider {
 
 export class MockMongoProvider {}
 
-export function createTestContext(mongoUrl: ?string) {
-  let mongo;
+export function createTestContext(mongoUrl?: string) {
+  let mongo: MongoProvider;
   if (mongoUrl) {
     mongo = new MongoProvider(mongoUrl);
   } else {
-    mongo = new MockMongoProvider();
+    mongo = new MockMongoProvider() as any;
   }
   return {
     webtaskToken: 'TEST_WEBTASK_TOKEN',
