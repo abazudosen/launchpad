@@ -100,7 +100,7 @@ export function createTestContext(mongoUrl?: string) {
     mongo,
     webtask: new MockWebtaskProvider(),
     user: null,
-  };
+  } as any;
 }
 
 export function createTestDatabaseName() {
