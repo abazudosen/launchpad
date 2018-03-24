@@ -26,7 +26,7 @@ const UserModel = {
   },
 
 
-  async verify(authorization: string | undefined, secret: string): Promise<User | null> {
+  async verify(authorization: string | null | undefined, secret: string): Promise<User | null> {
     const bearerLength = 'Bearer: '.length;
     if (authorization && authorization.length > bearerLength) {
       const token = authorization.slice(bearerLength);

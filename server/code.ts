@@ -130,7 +130,7 @@ export const RUNNER_WRAPPER = (code: string) =>
       global.__server.use(
         '/',
         (req, res, next) => {
-          req.userContext = req.headers['usercontext']
+          req.userContext = req.headers['usercontext'] || {};
           if (!schema) {
             schema = schemaFunction(req.userContext);
           }
@@ -140,8 +140,8 @@ export const RUNNER_WRAPPER = (code: string) =>
         (req, res, next) => {
           graphqlExpress({
             schema: schema,
-            tracing: true,
-            cacheControl: true,
+            tracing: req.userContext.APOLLO_ENGINE_KEY ? true : false,
+            cacheControl: req.userContext.APOLLO_ENGINE_KEY ? true : false,
           })(req, res, next)
         }
       );

@@ -1,5 +1,3 @@
-/* @flow */
-
 import fetch from 'node-fetch';
 import { fromPairs } from 'lodash';
 import { RUNNER_WRAPPER } from './code';
@@ -40,11 +38,11 @@ const CORE_DEPENDENCIES = [
 ];
 
 class WebtaskProvider {
-  webtaskUrl: string;
-  token: string;
-  tokens: Record<string, string>;
-  singleTenantContainer: string | null;
-  noProxy: boolean;
+  private webtaskUrl: string;
+  private token: string;
+  private tokens: Record<string, string>;
+  private singleTenantContainer: string | null;
+  private noProxy: boolean;
 
   constructor({
     token,

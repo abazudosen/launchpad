@@ -1,6 +1,6 @@
-import * as express from 'express';
-import * as cors from 'cors';
-import * as bodyParser from 'body-parser';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import schema from './schema';
 import { GraphQLContext } from './types';

@@ -1,5 +1,3 @@
-/* @flow */
-
 import MongoProvider from './MongoProvider';
 import WebtaskProvider from './WebtaskProvider';
 
