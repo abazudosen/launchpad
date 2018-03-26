@@ -80,13 +80,13 @@ export default class TitleEditor extends React.Component {
             <meta
               name="twitter:title"
               content={
-                this.state.title == '' ? 'Untitled Pad' : this.state.title
+                this.state.title === '' ? 'Untitled Pad' : this.state.title
               }
             />
             <meta
               property="og:title"
               content={
-                this.state.title == '' ? 'Untitled Pad' : this.state.title
+                this.state.title === '' ? 'Untitled Pad' : this.state.title
               }
             />
           </Helmet>

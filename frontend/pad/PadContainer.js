@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { graphql, compose, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Helmet } from 'react-helmet';
 import type {
   Pad as PadType,
   User as UserType,
