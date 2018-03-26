@@ -555,14 +555,16 @@ const updateMetadataMutation = gql`
 export default compose(
   withApollo,
   graphql(meQuery, { name: 'meData' }),
+  //Skip query if no id present
   graphql(padQuery, {
     name: 'padData',
     options: ({ id }) => ({ variables: { id } }),
-    skip: ({ id }) => id === null,
+    skip: ({ id }) => !id,
   }),
+  //Skip new pad if id is present
   graphql(newPadQuery, {
     name: 'padData',
-    skip: ({ id }) => id !== null,
+    skip: ({ id }) => id ? true : false,
   }),
   graphql(updatePadMutation, { name: 'updatePad' }),
   graphql(createPadMutation, { name: 'createPad' }),
