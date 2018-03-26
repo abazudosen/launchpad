@@ -46,6 +46,7 @@
     "react-helmet": "^5.2.0",
     "react-modal": "^1.7.7",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-split-pane": "^0.1.63",
     "to-snake-case": "^1.0.0"
   },

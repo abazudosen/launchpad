@@ -6,14 +6,9 @@ import {
   ApolloProvider,
   createNetworkInterface,
 } from 'react-apollo';
-import {
-  Route,
-  DefaultRoute,
-  BrowserRouter,
-  Switch,
-  Redirect,
-} from 'react-router';
-import PadContainer from './PadContainer';
+import { BrowserRouter } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router';
+import PadContainer from './pad/PadContainer';
 import ListContainer from './list/ListContainer';
 
 const networkInterface = createNetworkInterface({
@@ -76,7 +71,6 @@ export default class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Switch>
-              <DefaultRoute>{() => <Redirect to={'/new'} />}</DefaultRoute>
               <Route exact path="/list">
                 {() => <ListContainer />}
               </Route>
@@ -95,6 +89,7 @@ export default class App extends Component {
                     />
                   )}
               </Route>
+              <Redirect from="/" to="/new" />
             </Switch>
           </div>
         </BrowserRouter>
