@@ -69,29 +69,27 @@ export default class App extends Component {
     return (
       <ApolloProvider client={apolloClient}>
         <BrowserRouter>
-          <div className="App">
-            <Switch>
-              <Route exact path="/list">
-                {() => <ListContainer />}
-              </Route>
-              <Route exact path="/new">
-                <PadContainer engineClient={engineApolloClient} />
-              </Route>
-              <Route path="/:id">
-                {({ match }) =>
-                  match.params.id.length < 8 ||
-                  !match.params.id.match('^[a-zA-Z0-9_]*$') ? (
-                    <Redirect to={'/new'} />
-                  ) : (
-                    <PadContainer
-                      id={match.params.id}
-                      engineClient={engineApolloClient}
-                    />
-                  )}
-              </Route>
-              <Redirect from="/" to="/new" />
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path="/list">
+              {() => <ListContainer />}
+            </Route>
+            <Route exact path="/new">
+              <PadContainer engineClient={engineApolloClient} />
+            </Route>
+            <Route path="/:id">
+              {({ match }) =>
+                match.params.id.length < 8 ||
+                !match.params.id.match('^[a-zA-Z0-9_]*$') ? (
+                  <Redirect to={'/new'} />
+                ) : (
+                  <PadContainer
+                    id={match.params.id}
+                    engineClient={engineApolloClient}
+                  />
+                )}
+            </Route>
+            <Redirect from="/" to="/new" />
+          </Switch>
         </BrowserRouter>
       </ApolloProvider>
     );
