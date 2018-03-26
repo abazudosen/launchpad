@@ -2,8 +2,8 @@
 
 import { debounce } from 'lodash';
 import React, { Component } from 'react';
-import type { Pad as PadType, User, Context, DeployPayload } from './types';
-import { getCodeCompiler } from './services/CodeService';
+import type { Pad as PadType, User, Context, DeployPayload } from '../types';
+import { getCodeCompiler } from '../services/CodeService';
 import PadSplit from './PadSplit';
 
 type PadProps = {|

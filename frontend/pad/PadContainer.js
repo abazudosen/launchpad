@@ -11,8 +11,8 @@ import type {
   ApolloMutationResult,
   DeployPayload,
 } from './types';
-import { getLock } from './services/Auth0LockService';
-import { download } from './services/EjectService';
+import { getLock } from '../services/Auth0LockService';
+import { download } from '../services/EjectService';
 import Pad from './Pad';
 import './PadContainer.less';
 import { LoadingSpinner } from '../LoadingSpinner';
