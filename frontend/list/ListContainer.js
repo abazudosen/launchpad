@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 import type { User, ApolloData } from './types';
 import { LoadingSpinner } from '../LoadingSpinner';
 import List from './List';

@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { graphql, compose, withApollo } from 'react-apollo';
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 import { Helmet } from 'react-helmet';
 import type {
   Pad as PadType,
@@ -565,7 +565,7 @@ export default compose(
   //Skip new pad if id is present
   graphql(newPadQuery, {
     name: 'padData',
-    skip: ({ id }) => id ? true : false,
+    skip: ({ id }) => (id ? true : false),
   }),
   graphql(updatePadMutation, { name: 'updatePad' }),
   graphql(createPadMutation, { name: 'createPad' }),

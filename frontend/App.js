@@ -1,9 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import {
-  ApolloProvider,
-} from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Redirect } from 'react-router';
@@ -12,8 +10,7 @@ import ListContainer from './list/ListContainer';
 
 const apolloClient = new ApolloClient({
   uri: process.env.REACT_APP_LAUNCHPAD_API_URL,
-  request: (operation) => {
-
+  request: operation => {
     const token = localStorage.getItem('LAUNCHPAD_TOKEN');
     operation.setContext(context => ({
       headers: {
@@ -26,7 +23,7 @@ const apolloClient = new ApolloClient({
 
 const engineApolloClient = new ApolloClient({
   uri: 'https://engine-graphql.apollodata.com/api/graphql',
-  request: (operation) => {
+  request: operation => {
     operation.setContext({
       credentials: 'include',
     });

@@ -1,7 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 import type { Pad, Context } from '../types';
 import HeaderButton from './HeaderButton';
 
