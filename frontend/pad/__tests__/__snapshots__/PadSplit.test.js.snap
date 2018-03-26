@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render normally 1`] = `
+exports[`PadSplit render normally 1`] = `
 <div
   className="PadSplit"
 >
@@ -81,7 +81,6 @@ exports[`render normally 1`] = `
               "browserVersion": NaN,
               "cssPrefix": "-webkit-",
               "jsPrefix": "Webkit",
-              "linux": true,
               "name": "Safari",
               "osVersion": NaN,
               "safari": true,
@@ -98,7 +97,7 @@ exports[`render normally 1`] = `
               "requiresPrefix": Object {},
             },
             "_requiresPrefix": Object {},
-            "_userAgent": "Node.js (linux; U; rv:v6.11.2) AppleWebKit/537.36 (KHTML, like Gecko)",
+            "_userAgent": "Mozilla/5.0 (darwin) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/11.6.2",
             "prefixedKeyframes": "keyframes",
           }
         }

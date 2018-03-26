@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders normal 1`] = `
+exports[`Header Dropdown renders normal 1`] = `
 <div
   className="HeaderDropdown"
 >
@@ -22,7 +22,7 @@ exports[`renders normal 1`] = `
 </div>
 `;
 
-exports[`renders normal 2`] = `
+exports[`Header Dropdown renders normal 2`] = `
 <div
   className="HeaderDropdown"
 >

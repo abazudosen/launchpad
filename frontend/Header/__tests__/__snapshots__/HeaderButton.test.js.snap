@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders normal 1`] = `
+exports[`Header Button renders normal 1`] = `
 <button
   className="HeaderButton"
   onClick={[Function]}
@@ -15,7 +15,7 @@ exports[`renders normal 1`] = `
 </button>
 `;
 
-exports[`renders normal 2`] = `
+exports[`Header Button renders normal 2`] = `
 <button
   className="HeaderButton HeaderButton--active"
   onClick={[Function]}
@@ -30,7 +30,7 @@ exports[`renders normal 2`] = `
 </button>
 `;
 
-exports[`renders normal 3`] = `
+exports[`Header Button renders normal 3`] = `
 <button
   className="HeaderButton HeaderButton--disabled"
   onClick={[Function]}
@@ -45,7 +45,7 @@ exports[`renders normal 3`] = `
 </button>
 `;
 
-exports[`renders normal 4`] = `
+exports[`Header Button renders normal 4`] = `
 <button
   className="HeaderButton"
   onClick={[Function]}

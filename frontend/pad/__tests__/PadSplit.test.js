@@ -70,17 +70,19 @@ function renderPadSplit({
   );
 }
 
-test('render normally', () => {
-  const component = renderer.render(
-    renderPadSplit({
-      pad: testPad,
-      user: testUser,
-      currentCode: 'test',
-      currentContext: [{ key: 'test', value: 'testValue' }],
-      isDeploying: false,
-      error: null,
-    }),
-  );
+describe('PadSplit', () => {
+  test('render normally', () => {
+    const component = renderer.render(
+      renderPadSplit({
+        pad: testPad,
+        user: testUser,
+        currentCode: 'test',
+        currentContext: [{ key: 'test', value: 'testValue' }],
+        isDeploying: false,
+        error: null,
+      }),
+    );
 
-  expect(component).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+  });
 });

@@ -38,26 +38,28 @@ const testPad = {
 
 const testUser = testPad.user;
 
-test('renders normal', () => {
-  const component = renderer.render(
-    <GraphiQLWrapper
-      pad={testPad}
-      user={testUser}
-      isDeploying={false}
-      onSetDefaultQuery={() => {}}
-    />,
-  );
-  expect(component).toMatchSnapshot();
-});
+describe('GraphiQL Wrapper', () => {
+  test('renders normal', () => {
+    const component = renderer.render(
+      <GraphiQLWrapper
+        pad={testPad}
+        user={testUser}
+        isDeploying={false}
+        onSetDefaultQuery={() => {}}
+      />,
+    );
+    expect(component).toMatchSnapshot();
+  });
 
-test('renders deploying', () => {
-  const component = renderer.render(
-    <GraphiQLWrapper
-      pad={testPad}
-      user={testUser}
-      isDeploying={true}
-      onSetDefaultQuery={() => {}}
-    />,
-  );
-  expect(component).toMatchSnapshot();
+  test('renders deploying', () => {
+    const component = renderer.render(
+      <GraphiQLWrapper
+        pad={testPad}
+        user={testUser}
+        isDeploying={true}
+        onSetDefaultQuery={() => {}}
+      />,
+    );
+    expect(component).toMatchSnapshot();
+  });
 });

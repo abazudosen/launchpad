@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders normal 1`] = `
+exports[`User Bar renders normal 1`] = `
 <UserBar
   onLogin={[Function]}
   onLogout={[Function]}
@@ -101,7 +101,7 @@ exports[`renders normal 1`] = `
 </UserBar>
 `;
 
-exports[`renders normal 2`] = `
+exports[`User Bar renders normal 2`] = `
 <UserBar
   onLogin={[Function]}
   onLogout={[Function]}
@@ -198,7 +198,7 @@ exports[`renders normal 2`] = `
 </UserBar>
 `;
 
-exports[`renders normal 3`] = `
+exports[`User Bar renders normal 3`] = `
 <UserBar
   onLogin={[Function]}
   onLogout={[Function]}

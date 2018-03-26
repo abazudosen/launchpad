@@ -63,103 +63,105 @@ function renderHeader({ user, pad, isDraft, isDeployed, isDeploying }) {
   );
 }
 
-test('renders anon existing', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: null,
-      pad: testPad,
-      isDraft: false,
-      isDeployed: true,
-      isDeploying: false,
-    }),
-  );
-  expect(component).toMatchSnapshot();
-});
-
-test('renders anon new', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: null,
-      pad: {
-        ...testPad,
+describe('Main Heaaer', () => {
+  test('renders anon existing', () => {
+    const component = renderer.render(
+      renderHeader({
         user: null,
-      },
-      isDraft: false,
-      isDeployed: false,
-      isDeploying: false,
-    }),
-  );
-  expect(component).toMatchSnapshot();
-});
+        pad: testPad,
+        isDraft: false,
+        isDeployed: true,
+        isDeploying: false,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
 
-test('renders own', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: testUser,
-      pad: testPad,
-      isDraft: false,
-      isDeployed: true,
-      isDeploying: false,
-    }),
-  );
-  expect(component).toMatchSnapshot();
-});
-
-test('renders deploying', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: testUser,
-      pad: testPad,
-      isDraft: true,
-      isDeployed: true,
-      isDeploying: true,
-    }),
-  );
-  expect(component).toMatchSnapshot();
-});
-
-test('renders undeployed', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: testUser,
-      pad: testPad,
-      isDraft: false,
-      isDeployed: false,
-      isDeploying: false,
-    }),
-  );
-  expect(component).toMatchSnapshot();
-});
-
-test('renders draft', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: testUser,
-      pad: testPad,
-      isDraft: true,
-      isDeployed: true,
-      isDeploying: false,
-    }),
-  );
-  expect(component).toMatchSnapshot();
-});
-
-test('render others', () => {
-  const component = renderer.render(
-    renderHeader({
-      user: testUser,
-      pad: {
-        ...testPad,
-        user: {
-          id: 'some-new-id',
-          githubUsername: 'some-new-username',
-          pads: [],
+  test('renders anon new', () => {
+    const component = renderer.render(
+      renderHeader({
+        user: null,
+        pad: {
+          ...testPad,
+          user: null,
         },
-      },
-      isDraft: false,
-      isDeployed: true,
-      isDeploying: false,
-    }),
-  );
-  expect(component).toMatchSnapshot();
+        isDraft: false,
+        isDeployed: false,
+        isDeploying: false,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
+
+  test('renders own', () => {
+    const component = renderer.render(
+      renderHeader({
+        user: testUser,
+        pad: testPad,
+        isDraft: false,
+        isDeployed: true,
+        isDeploying: false,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
+
+  test('renders deploying', () => {
+    const component = renderer.render(
+      renderHeader({
+        user: testUser,
+        pad: testPad,
+        isDraft: true,
+        isDeployed: true,
+        isDeploying: true,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
+
+  test('renders undeployed', () => {
+    const component = renderer.render(
+      renderHeader({
+        user: testUser,
+        pad: testPad,
+        isDraft: false,
+        isDeployed: false,
+        isDeploying: false,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
+
+  test('renders draft', () => {
+    const component = renderer.render(
+      renderHeader({
+        user: testUser,
+        pad: testPad,
+        isDraft: true,
+        isDeployed: true,
+        isDeploying: false,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
+
+  test('render others', () => {
+    const component = renderer.render(
+      renderHeader({
+        user: testUser,
+        pad: {
+          ...testPad,
+          user: {
+            id: 'some-new-id',
+            githubUsername: 'some-new-username',
+            pads: [],
+          },
+        },
+        isDraft: false,
+        isDeployed: true,
+        isDeploying: false,
+      }),
+    );
+    expect(component).toMatchSnapshot();
+  });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render others 1`] = `
+exports[`Main Heaaer render others 1`] = `
 <div
   className="Header"
 >
@@ -81,6 +81,13 @@ exports[`render others 1`] = `
           },
         }
       }
+      user={
+        Object {
+          "githubUsername": "example",
+          "id": "test-ids",
+          "pads": Array [],
+        }
+      }
     />
   </div>
   <div
@@ -104,7 +111,7 @@ exports[`render others 1`] = `
 </div>
 `;
 
-exports[`renders anon existing 1`] = `
+exports[`Main Heaaer renders anon existing 1`] = `
 <div
   className="Header"
 >
@@ -185,6 +192,7 @@ exports[`renders anon existing 1`] = `
           },
         }
       }
+      user={null}
     />
   </div>
   <div
@@ -202,7 +210,7 @@ exports[`renders anon existing 1`] = `
 </div>
 `;
 
-exports[`renders anon new 1`] = `
+exports[`Main Heaaer renders anon new 1`] = `
 <div
   className="Header"
 >
@@ -279,6 +287,7 @@ exports[`renders anon new 1`] = `
           "user": null,
         }
       }
+      user={null}
     />
   </div>
   <div
@@ -296,7 +305,7 @@ exports[`renders anon new 1`] = `
 </div>
 `;
 
-exports[`renders deploying 1`] = `
+exports[`Main Heaaer renders deploying 1`] = `
 <div
   className="Header"
 >
@@ -377,6 +386,13 @@ exports[`renders deploying 1`] = `
           },
         }
       }
+      user={
+        Object {
+          "githubUsername": "example",
+          "id": "test-ids",
+          "pads": Array [],
+        }
+      }
     />
   </div>
   <div
@@ -400,7 +416,7 @@ exports[`renders deploying 1`] = `
 </div>
 `;
 
-exports[`renders draft 1`] = `
+exports[`Main Heaaer renders draft 1`] = `
 <div
   className="Header"
 >
@@ -481,6 +497,13 @@ exports[`renders draft 1`] = `
           },
         }
       }
+      user={
+        Object {
+          "githubUsername": "example",
+          "id": "test-ids",
+          "pads": Array [],
+        }
+      }
     />
   </div>
   <div
@@ -504,7 +527,7 @@ exports[`renders draft 1`] = `
 </div>
 `;
 
-exports[`renders own 1`] = `
+exports[`Main Heaaer renders own 1`] = `
 <div
   className="Header"
 >
@@ -585,6 +608,13 @@ exports[`renders own 1`] = `
           },
         }
       }
+      user={
+        Object {
+          "githubUsername": "example",
+          "id": "test-ids",
+          "pads": Array [],
+        }
+      }
     />
   </div>
   <div
@@ -608,7 +638,7 @@ exports[`renders own 1`] = `
 </div>
 `;
 
-exports[`renders undeployed 1`] = `
+exports[`Main Heaaer renders undeployed 1`] = `
 <div
   className="Header"
 >
@@ -687,6 +717,13 @@ exports[`renders undeployed 1`] = `
             "id": "test-ids",
             "pads": Array [],
           },
+        }
+      }
+      user={
+        Object {
+          "githubUsername": "example",
+          "id": "test-ids",
+          "pads": Array [],
         }
       }
     />

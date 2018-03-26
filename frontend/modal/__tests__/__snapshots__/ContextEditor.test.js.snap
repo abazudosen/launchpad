@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders empty 1`] = `
+exports[`Secrets/Context Modal renders empty 1`] = `
 <div
   className="ContextEditor"
 >
@@ -36,7 +36,7 @@ exports[`renders empty 1`] = `
 </div>
 `;
 
-exports[`renders hidden 1`] = `
+exports[`Secrets/Context Modal renders hidden 1`] = `
 <div
   className="ContextEditor"
 >
@@ -118,7 +118,7 @@ exports[`renders hidden 1`] = `
 </div>
 `;
 
-exports[`renders normal 1`] = `
+exports[`Secrets/Context Modal renders normal 1`] = `
 <div
   className="ContextEditor"
 >

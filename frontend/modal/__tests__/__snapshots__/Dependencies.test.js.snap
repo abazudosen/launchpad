@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders empty 1`] = `
+exports[`Dependencies Modal renders empty 1`] = `
 <div
   className="Dependencies"
 >
@@ -15,7 +15,7 @@ exports[`renders empty 1`] = `
 </div>
 `;
 
-exports[`renders non-empty 1`] = `
+exports[`Dependencies Modal renders non-empty 1`] = `
 <div
   className="Dependencies"
 >

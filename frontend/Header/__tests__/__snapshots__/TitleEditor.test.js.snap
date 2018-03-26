@@ -1,19 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`interaction 1`] = `
+exports[`Title Editor interaction 1`] = `
 <TitleEditor
   canEdit={true}
   githubUsername="example"
-  onSetTitle={[Function]}
+  onSetTitle={[MockFunction]}
   title="test"
 >
   <div
     className="Title-Editor"
   >
     <HelmetWrapper
+      defer={true}
       encodeSpecialCharacters={true}
     >
       <SideEffect(NullComponent)
+        defer={true}
         encodeSpecialCharacters={true}
         meta={
           Array [
@@ -29,6 +31,7 @@ exports[`interaction 1`] = `
         }
       >
         <NullComponent
+          defer={true}
           encodeSpecialCharacters={true}
           meta={
             Array [
@@ -66,20 +69,22 @@ exports[`interaction 1`] = `
 </TitleEditor>
 `;
 
-exports[`interaction 2`] = `
+exports[`Title Editor interaction 2`] = `
 <TitleEditor
   canEdit={true}
   githubUsername="example"
-  onSetTitle={[Function]}
+  onSetTitle={[MockFunction]}
   title="test"
 >
   <div
     className="Title-Editor"
   >
     <HelmetWrapper
+      defer={true}
       encodeSpecialCharacters={true}
     >
       <SideEffect(NullComponent)
+        defer={true}
         encodeSpecialCharacters={true}
         meta={
           Array [
@@ -95,6 +100,7 @@ exports[`interaction 2`] = `
         }
       >
         <NullComponent
+          defer={true}
           encodeSpecialCharacters={true}
           meta={
             Array [
@@ -132,20 +138,30 @@ exports[`interaction 2`] = `
 </TitleEditor>
 `;
 
-exports[`interaction 3`] = `
+exports[`Title Editor interaction 3`] = `
 <TitleEditor
   canEdit={true}
   githubUsername="example"
-  onSetTitle={[Function]}
+  onSetTitle={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "New test",
+        ],
+      ],
+    }
+  }
   title="test"
 >
   <div
     className="Title-Editor"
   >
     <HelmetWrapper
+      defer={true}
       encodeSpecialCharacters={true}
     >
       <SideEffect(NullComponent)
+        defer={true}
         encodeSpecialCharacters={true}
         meta={
           Array [
@@ -161,6 +177,7 @@ exports[`interaction 3`] = `
         }
       >
         <NullComponent
+          defer={true}
           encodeSpecialCharacters={true}
           meta={
             Array [
@@ -198,7 +215,7 @@ exports[`interaction 3`] = `
 </TitleEditor>
 `;
 
-exports[`render normal 1`] = `
+exports[`Title Editor render normal 1`] = `
 <div
   className="Title-Editor"
 >
@@ -222,7 +239,7 @@ exports[`render normal 1`] = `
 </div>
 `;
 
-exports[`render normal 2`] = `
+exports[`Title Editor render normal 2`] = `
 <div
   className="Title"
 >
@@ -243,7 +260,7 @@ exports[`render normal 2`] = `
 </div>
 `;
 
-exports[`render normal 3`] = `
+exports[`Title Editor render normal 3`] = `
 <div
   className="Title-Editor"
 >
@@ -267,7 +284,7 @@ exports[`render normal 3`] = `
 </div>
 `;
 
-exports[`render normal 4`] = `
+exports[`Title Editor render normal 4`] = `
 <div
   className="Title-Editor"
 >

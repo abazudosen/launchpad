@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`Key Value Editor renders 1`] = `
 <KeyValueEditor
-  onChange={[Function]}
+  onChange={[MockFunction]}
   value={Array []}
 >
   <div
@@ -37,9 +37,9 @@ exports[`renders 1`] = `
 </KeyValueEditor>
 `;
 
-exports[`renders 2`] = `
+exports[`Key Value Editor renders 2`] = `
 <KeyValueEditor
-  onChange={[Function]}
+  onChange={[MockFunction]}
   value={
     Array [
       Object {
@@ -104,9 +104,9 @@ exports[`renders 2`] = `
 </KeyValueEditor>
 `;
 
-exports[`renders 3`] = `
+exports[`Key Value Editor renders 3`] = `
 <KeyValueEditor
-  onChange={[Function]}
+  onChange={[MockFunction]}
   value={
     Array [
       Object {
@@ -198,9 +198,9 @@ exports[`renders 3`] = `
 </KeyValueEditor>
 `;
 
-exports[`renders 4`] = `
+exports[`Key Value Editor renders 4`] = `
 <KeyValueEditor
-  onChange={[Function]}
+  onChange={[MockFunction]}
   value={
     Array [
       Object {
@@ -292,105 +292,10 @@ exports[`renders 4`] = `
 </KeyValueEditor>
 `;
 
-exports[`renders 5`] = `
+exports[`Key Value Editor renders 5`] = `
 <KeyValueEditor
   hilightEmpty={true}
-  onChange={[Function]}
-  value={
-    Array [
-      Object {
-        "key": "test",
-        "value": "bar",
-      },
-      Object {
-        "key": "test2",
-        "value": "",
-      },
-    ]
-  }
->
-  <div
-    className="KeyValueEditor"
-  >
-    <div
-      className="KeyValueEditor-Line"
-    >
-      <div
-        className="KeyValueEditor-Label"
-      >
-        Key
-      </div>
-      <div
-        className="KeyValueEditor-Label"
-      >
-        Value
-      </div>
-    </div>
-    <div
-      className="KeyValueEditor-Line"
-    >
-      <input
-        className="KeyValueEditor-Input"
-        disabled={false}
-        onChange={[Function]}
-        value="test"
-      />
-      <input
-        className="KeyValueEditor-Input"
-        onChange={[Function]}
-        value="bar"
-      />
-      <button
-        className="KeyValueEditor-DeleteButton"
-        onClick={[Function]}
-      >
-        <span
-          className="icon-cross"
-        />
-      </button>
-    </div>
-    <div
-      className="KeyValueEditor-Line"
-    >
-      <input
-        className="KeyValueEditor-Input"
-        disabled={false}
-        onChange={[Function]}
-        value="test2"
-      />
-      <input
-        className="KeyValueEditor-Input KeyValueEditor-Input--error"
-        onChange={[Function]}
-        value=""
-      />
-      <button
-        className="KeyValueEditor-DeleteButton"
-        onClick={[Function]}
-      >
-        <span
-          className="icon-cross"
-        />
-      </button>
-    </div>
-    <button
-      className="KeyValueEditor-AddButton btn primary"
-      onClick={[Function]}
-    >
-      <span>
-        Add
-      </span>
-      <span
-        className="icon-plus"
-      />
-    </button>
-  </div>
-</KeyValueEditor>
-`;
-
-exports[`renders 6`] = `
-<KeyValueEditor
-  hilightEmpty={true}
-  onChange={[Function]}
+  onChange={[MockFunction]}
   value={
     Array [
       Object {
@@ -482,10 +387,159 @@ exports[`renders 6`] = `
 </KeyValueEditor>
 `;
 
-exports[`renders 7`] = `
+exports[`Key Value Editor renders 6`] = `
 <KeyValueEditor
   hilightEmpty={true}
-  onChange={[Function]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Array [
+            Object {
+              "key": "test",
+              "value": "bar",
+            },
+            Object {
+              "key": "test2",
+              "value": "",
+            },
+            Object {
+              "key": "",
+              "value": "",
+            },
+          ],
+        ],
+      ],
+    }
+  }
+  value={
+    Array [
+      Object {
+        "key": "test",
+        "value": "bar",
+      },
+      Object {
+        "key": "test2",
+        "value": "",
+      },
+    ]
+  }
+>
+  <div
+    className="KeyValueEditor"
+  >
+    <div
+      className="KeyValueEditor-Line"
+    >
+      <div
+        className="KeyValueEditor-Label"
+      >
+        Key
+      </div>
+      <div
+        className="KeyValueEditor-Label"
+      >
+        Value
+      </div>
+    </div>
+    <div
+      className="KeyValueEditor-Line"
+    >
+      <input
+        className="KeyValueEditor-Input"
+        disabled={false}
+        onChange={[Function]}
+        value="test"
+      />
+      <input
+        className="KeyValueEditor-Input"
+        onChange={[Function]}
+        value="bar"
+      />
+      <button
+        className="KeyValueEditor-DeleteButton"
+        onClick={[Function]}
+      >
+        <span
+          className="icon-cross"
+        />
+      </button>
+    </div>
+    <div
+      className="KeyValueEditor-Line"
+    >
+      <input
+        className="KeyValueEditor-Input"
+        disabled={false}
+        onChange={[Function]}
+        value="test2"
+      />
+      <input
+        className="KeyValueEditor-Input KeyValueEditor-Input--error"
+        onChange={[Function]}
+        value=""
+      />
+      <button
+        className="KeyValueEditor-DeleteButton"
+        onClick={[Function]}
+      >
+        <span
+          className="icon-cross"
+        />
+      </button>
+    </div>
+    <button
+      className="KeyValueEditor-AddButton btn primary"
+      onClick={[Function]}
+    >
+      <span>
+        Add
+      </span>
+      <span
+        className="icon-plus"
+      />
+    </button>
+  </div>
+</KeyValueEditor>
+`;
+
+exports[`Key Value Editor renders 7`] = `
+<KeyValueEditor
+  hilightEmpty={true}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Array [
+            Object {
+              "key": "test",
+              "value": "bar",
+            },
+            Object {
+              "key": "test2",
+              "value": "",
+            },
+            Object {
+              "key": "",
+              "value": "",
+            },
+          ],
+        ],
+        Array [
+          Array [
+            Object {
+              "key": "test",
+              "value": "bar",
+            },
+            Object {
+              "key": "test2",
+              "value": "",
+            },
+          ],
+        ],
+      ],
+    }
+  }
   value={
     Array [
       Object {

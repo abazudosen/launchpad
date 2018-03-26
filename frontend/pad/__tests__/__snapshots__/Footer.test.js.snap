@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders draft 1`] = `
+exports[`Footer renders draft 1`] = `
 <div
   className="Footer"
 >
@@ -92,7 +92,7 @@ exports[`renders draft 1`] = `
 </div>
 `;
 
-exports[`renders draft 2`] = `
+exports[`Footer renders draft 2`] = `
 <div
   className="Footer"
 >
@@ -166,187 +166,7 @@ exports[`renders draft 2`] = `
 </div>
 `;
 
-exports[`renders error 1`] = `
-<div
-  className="Footer"
->
-  <div
-    className="Footer-Left"
-  >
-    <div
-      className="footer-button"
-      onClick={[Function]}
-    >
-      <span
-        className="icon-lock"
-      />
-      <span>
-        Secrets
-      </span>
-    </div>
-    <div
-      className="footer-button"
-      onClick={[Function]}
-    >
-      <span
-        className="icon-paperclip"
-      />
-      <span>
-        npm Deps
-      </span>
-    </div>
-    <div
-      className="footer-button"
-      onClick={[Function]}
-    >
-      <span
-        className="icon-list-unordered"
-      />
-      Logs
-    </div>
-  </div>
-  <div
-    className="Footer-ErrorWrapper"
-  >
-    <code
-      className="Footer-ErrorText"
-    >
-      error
-       
-      <span>
-        Click to
-         
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-          reset
-        </a>
-         
-        to saved version.
-      </span>
-    </code>
-  </div>
-  <div
-    className="Footer-Right"
-  >
-    <div
-      className="footer-button"
-    >
-      <span
-        className="icon-book"
-      />
-      <a
-        href="https://github.com/apollographql/awesome-launchpad/"
-      >
-        Docs
-      </a>
-    </div>
-    <div
-      className="powered-by"
-    >
-      <span>
-        Powered by
-      </span>
-      <a
-        href="https://auth0.com/extend/developers"
-      >
-        <img
-          alt="Auth0 Extend Logo"
-          className="extend-logo"
-          src="auth0-extend-logo.svg"
-        />
-      </a>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`renders error 2`] = `
-<div
-  className="Footer"
->
-  <div
-    className="Footer-Left"
-  >
-    <div
-      className="footer-button"
-      onClick={[Function]}
-    >
-      <span
-        className="icon-lock"
-      />
-      <span>
-        Secrets
-      </span>
-    </div>
-    <div
-      className="footer-button"
-      onClick={[Function]}
-    >
-      <span
-        className="icon-paperclip"
-      />
-      <span>
-        npm Deps
-      </span>
-    </div>
-    <div
-      className="footer-button"
-      onClick={[Function]}
-    >
-      <span
-        className="icon-list-unordered"
-      />
-      Logs
-    </div>
-  </div>
-  <div
-    className="Footer-ErrorWrapper"
-  >
-    <code
-      className="Footer-ErrorText"
-    >
-      error
-       
-    </code>
-  </div>
-  <div
-    className="Footer-Right"
-  >
-    <div
-      className="footer-button"
-    >
-      <span
-        className="icon-book"
-      />
-      <a
-        href="https://github.com/apollographql/awesome-launchpad/"
-      >
-        Docs
-      </a>
-    </div>
-    <div
-      className="powered-by"
-    >
-      <span>
-        Powered by
-      </span>
-      <a
-        href="https://auth0.com/extend/developers"
-      >
-        <img
-          alt="Auth0 Extend Logo"
-          className="extend-logo"
-          src="auth0-extend-logo.svg"
-        />
-      </a>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`renders error 3`] = `
+exports[`Footer renders error 1`] = `
 <div
   className="Footer"
 >
@@ -442,7 +262,187 @@ exports[`renders error 3`] = `
 </div>
 `;
 
-exports[`renders normal 1`] = `
+exports[`Footer renders error 2`] = `
+<div
+  className="Footer"
+>
+  <div
+    className="Footer-Left"
+  >
+    <div
+      className="footer-button"
+      onClick={[Function]}
+    >
+      <span
+        className="icon-lock"
+      />
+      <span>
+        Secrets
+      </span>
+    </div>
+    <div
+      className="footer-button"
+      onClick={[Function]}
+    >
+      <span
+        className="icon-paperclip"
+      />
+      <span>
+        npm Deps
+      </span>
+    </div>
+    <div
+      className="footer-button"
+      onClick={[Function]}
+    >
+      <span
+        className="icon-list-unordered"
+      />
+      Logs
+    </div>
+  </div>
+  <div
+    className="Footer-ErrorWrapper"
+  >
+    <code
+      className="Footer-ErrorText"
+    >
+      error
+       
+    </code>
+  </div>
+  <div
+    className="Footer-Right"
+  >
+    <div
+      className="footer-button"
+    >
+      <span
+        className="icon-book"
+      />
+      <a
+        href="https://github.com/apollographql/awesome-launchpad/"
+      >
+        Docs
+      </a>
+    </div>
+    <div
+      className="powered-by"
+    >
+      <span>
+        Powered by
+      </span>
+      <a
+        href="https://auth0.com/extend/developers"
+      >
+        <img
+          alt="Auth0 Extend Logo"
+          className="extend-logo"
+          src="auth0-extend-logo.svg"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Footer renders error 3`] = `
+<div
+  className="Footer"
+>
+  <div
+    className="Footer-Left"
+  >
+    <div
+      className="footer-button"
+      onClick={[Function]}
+    >
+      <span
+        className="icon-lock"
+      />
+      <span>
+        Secrets
+      </span>
+    </div>
+    <div
+      className="footer-button"
+      onClick={[Function]}
+    >
+      <span
+        className="icon-paperclip"
+      />
+      <span>
+        npm Deps
+      </span>
+    </div>
+    <div
+      className="footer-button"
+      onClick={[Function]}
+    >
+      <span
+        className="icon-list-unordered"
+      />
+      Logs
+    </div>
+  </div>
+  <div
+    className="Footer-ErrorWrapper"
+  >
+    <code
+      className="Footer-ErrorText"
+    >
+      error
+       
+      <span>
+        Click to
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          reset
+        </a>
+         
+        to saved version.
+      </span>
+    </code>
+  </div>
+  <div
+    className="Footer-Right"
+  >
+    <div
+      className="footer-button"
+    >
+      <span
+        className="icon-book"
+      />
+      <a
+        href="https://github.com/apollographql/awesome-launchpad/"
+      >
+        Docs
+      </a>
+    </div>
+    <div
+      className="powered-by"
+    >
+      <span>
+        Powered by
+      </span>
+      <a
+        href="https://auth0.com/extend/developers"
+      >
+        <img
+          alt="Auth0 Extend Logo"
+          className="extend-logo"
+          src="auth0-extend-logo.svg"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Footer renders normal 1`] = `
 <div
   className="Footer"
 >
@@ -528,7 +528,7 @@ exports[`renders normal 1`] = `
 </div>
 `;
 
-exports[`renders normal 2`] = `
+exports[`Footer renders normal 2`] = `
 <div
   className="Footer"
 >
@@ -614,7 +614,7 @@ exports[`renders normal 2`] = `
 </div>
 `;
 
-exports[`renders undeployed 1`] = `
+exports[`Footer renders undeployed 1`] = `
 <div
   className="Footer"
 >

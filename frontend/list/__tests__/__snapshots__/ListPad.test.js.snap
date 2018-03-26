@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders normal 1`] = `
+exports[`Pad List Component renders normal 1`] = `
 <div
   className="ListPad"
 >

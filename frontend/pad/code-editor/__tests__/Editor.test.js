@@ -13,10 +13,12 @@ jest.mock('../EditorLinter');
 
 expect.addSnapshotSerializer(serializer);
 
-test('renders', () => {
-  const component = mount(
-    <Editor code={STARTER_CODE} canEdit={true} onChange={() => {}} />,
-  );
+describe('Code Editor', () => {
+  test('renders', () => {
+    const component = mount(
+      <Editor code={STARTER_CODE} canEdit={true} onChange={() => {}} />,
+    );
 
-  expect(component).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
+  });
 });

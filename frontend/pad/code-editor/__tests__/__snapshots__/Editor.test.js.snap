@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`Code Editor renders 1`] = `
 <Editor
   canEdit={true}
   code="// Welcome to Launchpad!

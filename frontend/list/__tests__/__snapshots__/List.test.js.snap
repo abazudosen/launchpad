@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders empty 1`] = `
+exports[`List View renders empty 1`] = `
 <div
   className="List"
 >
@@ -16,13 +16,11 @@ exports[`renders empty 1`] = `
   />
   <div
     className="List-PadList"
-  >
-    
-  </div>
+  />
 </div>
 `;
 
-exports[`renders full 1`] = `
+exports[`List View renders full 1`] = `
 <div
   className="List"
 >

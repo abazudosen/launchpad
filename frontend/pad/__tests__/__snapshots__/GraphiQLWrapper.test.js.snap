@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders deploying 1`] = `
+exports[`GraphiQL Wrapper renders deploying 1`] = `
 <div
   className="GraphiQLWrapper"
 >
@@ -56,7 +56,7 @@ exports[`renders deploying 1`] = `
 </div>
 `;
 
-exports[`renders normal 1`] = `
+exports[`GraphiQL Wrapper renders normal 1`] = `
 <div
   className="GraphiQLWrapper"
 >
