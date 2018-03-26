@@ -1,7 +1,8 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { gql, graphql, compose, withApollo } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
+import gql from 'graphql-tag'
 import { Helmet } from 'react-helmet';
 import type {
   Pad as PadType,

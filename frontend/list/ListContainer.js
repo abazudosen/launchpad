@@ -1,7 +1,8 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag'
 import type { User, ApolloData } from './types';
 import { LoadingSpinner } from '../LoadingSpinner';
 import List from './List';

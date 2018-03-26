@@ -2,47 +2,35 @@
 
 import React, { Component } from 'react';
 import {
-  ApolloClient,
   ApolloProvider,
-  createNetworkInterface,
 } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch, Redirect } from 'react-router';
 import PadContainer from './pad/PadContainer';
 import ListContainer from './list/ListContainer';
 
-const networkInterface = createNetworkInterface({
-  uri: process.env.REACT_APP_LAUNCHPAD_API_URL,
-});
-
-networkInterface.use([
-  {
-    applyMiddleware(req, next) {
-      if (!req.options.headers) {
-        req.options.headers = {};
-      }
-      const token = localStorage.getItem('LAUNCHPAD_TOKEN');
-      if (token) {
-        req.options.headers['authorization'] = `Bearer: ${token}`;
-      }
-      next();
-    },
-  },
-]);
-
 const apolloClient = new ApolloClient({
-  networkInterface,
-});
+  uri: process.env.REACT_APP_LAUNCHPAD_API_URL,
+  request: (operation) => {
 
-const engineNetworkInterface = createNetworkInterface({
-  uri: 'https://engine-graphql.apollodata.com/api/graphql',
-  opts: {
-    credentials: 'include',
+    const token = localStorage.getItem('LAUNCHPAD_TOKEN');
+    operation.setContext(context => ({
+      headers: {
+        ...context.headers,
+        authorization: `Bearer: ${token}`,
+      },
+    }));
   },
 });
 
 const engineApolloClient = new ApolloClient({
-  networkInterface: engineNetworkInterface,
+  uri: 'https://engine-graphql.apollodata.com/api/graphql',
+  request: (operation) => {
+    operation.setContext({
+      credentials: 'include',
+    });
+  },
 });
 
 export default class App extends Component {
