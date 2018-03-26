@@ -13,13 +13,22 @@ describe('verify', () => {
   const secret2 =
     'XyCg253ILEcmU4WsInmRvhqsEqEBsvuHdEF1TkIWUZxN5mztiaX6z94nWNpSjsW';
 
-  it('no authorization', async () => {
-    const _error = console.error;
-    const mock = jest.fn();
+  let oldError: any;
+  let mock: any;
+
+  beforeEach(() => {
+    oldError = console.error;
+    mock = jest.fn();
     console.error = mock;
-    expect(await UserModel.verify(null, secret)).toBeNull();
-    expect(mock).toBeCalled();
-    console.error = _error;
+  })
+
+  afterEach(() => {
+    console.error = oldError;
+  });
+
+  it('no authorization', async () => {
+    await expect(UserModel.verify(null, secret)).resolves.toBeNull();
+    expect(mock).not.toBeCalled();
   });
 
   it('valid authorization', async () => {
@@ -34,15 +43,14 @@ describe('verify', () => {
         expiresIn: '1 min',
       },
     )}`;
-    expect(await UserModel.verify(authorization, secret)).toEqual({
+    await expect(await UserModel.verify(authorization, secret)).toEqual({
       id: 'test-id',
       githubUsername: 'test-username',
     });
+    expect(mock).not.toBeCalled();
   });
 
   it('invalid authorization', async () => {
-    const _error = console.error;
-    console.error = jest.fn();
     const authorization = `Bearer: ${jwt.sign(
       {
         sub: 'test-id',
@@ -51,9 +59,8 @@ describe('verify', () => {
       secret2,
     )}`;
 
-    expect(await UserModel.verify(authorization, secret)).toBeNull();
-    expect(console.error).toBeCalled();
-    console.error = _error;
+    await expect(UserModel.verify(authorization, secret)).resolves.toBeNull();
+    expect(mock).toBeCalled();
   });
 
   it('expired authorization', async () => {
@@ -69,6 +76,7 @@ describe('verify', () => {
       },
     )}`;
     expect(await UserModel.verify(authorization, secret)).toBeNull();
+    expect(mock).toBeCalled();
   });
 });
 
