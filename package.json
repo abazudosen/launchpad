@@ -142,6 +142,7 @@
       "server/code.js",
       "types.js"
     ],
+    "projects": ["<rootDir>/frontend", "<rootDir>/server"],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
       "<rootDir>/test/setupTests.js"
@@ -173,7 +174,6 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
-    },
-    "verbose": true
+    }
   }
 }
