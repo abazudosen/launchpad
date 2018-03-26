@@ -265,6 +265,10 @@ module.exports = {
         comments: false,
       },
       sourceMap: true,
+      // Disabled due to https://github.com/graphql/graphql-js/issues/1182
+      // Waiting on https://github.com/graphql/graphql-language-service/issues/219
+      // XXX can't upgrade to graphql@0.13.x without:
+      // mangle:false,
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
