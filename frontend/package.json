@@ -1,0 +1,31 @@
+{
+  "jest": {
+    "collectCoverageFrom": ["**/*.{js,jsx}"],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/services/eject",
+      "<rootDir>/services/eslint",
+      "types.js"
+    ],
+    "setupFiles": ["../config/polyfills.js", "../test/setupTests.js"],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>(/*)?/node_modules/",
+      "<rootDir>(/*)?/build/",
+      "<rootDir>(/*)?/__tests__/utils/"
+    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "testEnvironment": "jsdom",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.(js|jsx)$": "../node_modules/babel-jest",
+      "^.+\\.css$": "../config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "../config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    }
+  }
+}
