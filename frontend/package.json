@@ -1,9 +1,6 @@
 {
   "jest": {
-    "collectCoverageFrom": [
-      "frontend/**/*.{js,jsx}",
-      "server/**/*.{ts,tsx}"
-    ],
+    "collectCoverageFrom": ["frontend/**/*.{js,jsx}", "server/**/*.{ts,tsx}"],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "frontend/services/eject",
@@ -11,24 +8,14 @@
       "server/code.js",
       "types.js"
     ],
-    "setupFiles": [
-      "../config/polyfills.js",
-      "../test/setupTests.js"
-    ],
+    "setupFiles": ["../config/polyfills.js", "../test/setupTests.js"],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/build/",
       "/__tests__/utils/"
     ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
@@ -37,9 +24,7 @@
       "^.+\\.css$": "../config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "../config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     }

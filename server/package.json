@@ -1,27 +1,14 @@
 {
   "jest": {
-    "collectCoverageFrom": [
-      "**/*.{ts,tsx}"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/code.js",
-      "types.js"
-    ],
+    "collectCoverageFrom": ["**/*.{ts,tsx}"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "/code.js", "types.js"],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/build/",
       "/__tests__/utils/"
     ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
