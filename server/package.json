@@ -4,13 +4,12 @@
     "coveragePathIgnorePatterns": ["/node_modules/", "/code.js", "types.js"],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/build/",
-      "/__tests__/utils/"
+      "<rootDir>(/*)?/node_modules/",
+      "<rootDir>(/*)?/build/",
+      "<rootDir>(/*)?/__tests__/utils/"
     ],
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "testEnvironment": "node",
-    "testURL": "http://localhost",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     }

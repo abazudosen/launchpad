@@ -125,55 +125,12 @@
     "eslint": "eslint ./frontend/ && eslint ./server/",
     "check-prettier": "git ls-files | grep \"frontend\\|server\" | grep \"\\.(css\\|less\\|js\\|json)$\" | grep -v -f .eslintignore | xargs prettier-check --single-quote --trailing-comma all --write --write",
     "prettier": "git ls-files | grep \"frontend\\|server\" | grep \"\\.(css\\|less\\|js\\|json)$\" | grep -v -f .eslintignore | xargs prettier --single-quote --trailing-comma all --write --write",
-    "test": "npm run check-prettier && npm run eslint && jest --verbose && npm run test-server && npm run test-client",
+    "test": "npm run check-prettier && npm run eslint && jest",
     "test-server": "jest server",
-    "test-client": "jest frontend --env=jsdom",
+    "test-client": "jest frontend",
     "heroku-postbuild": "npm run build-server"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "frontend/**/*.{js,jsx}",
-      "server/**/*.{ts,tsx}"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "frontend/services/eject",
-      "frontend/services/eslint",
-      "server/code.js",
-      "types.js"
-    ],
-    "projects": ["<rootDir>/frontend", "<rootDir>/server"],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js",
-      "<rootDir>/test/setupTests.js"
-    ],
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/build/",
-      "/__tests__/utils/"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    }
+    "projects": ["<rootDir>/frontend", "<rootDir>/server"]
   }
 }

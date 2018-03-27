@@ -1,19 +1,18 @@
 {
   "jest": {
-    "collectCoverageFrom": ["frontend/**/*.{js,jsx}", "server/**/*.{ts,tsx}"],
+    "collectCoverageFrom": ["**/*.{js,jsx}"],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "frontend/services/eject",
-      "frontend/services/eslint",
-      "server/code.js",
+      "<rootDir>/services/eject",
+      "<rootDir>/services/eslint",
       "types.js"
     ],
     "setupFiles": ["../config/polyfills.js", "../test/setupTests.js"],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/build/",
-      "/__tests__/utils/"
+      "<rootDir>(/*)?/node_modules/",
+      "<rootDir>(/*)?/build/",
+      "<rootDir>(/*)?/__tests__/utils/"
     ],
     "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "testEnvironment": "jsdom",
